@@ -15,27 +15,55 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
             min-height: 100vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* 响应式布局容器 */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            width: 100%;
             padding: 20px;
         }
 
-        .container {
-            text-align: center;
+        /* 横屏布局（大屏幕） */
+        @media (min-width: 768px) {
+            .error-container {
+                flex-direction: row;
+                justify-content: center;
+                gap: 60px;
+                max-width: 1200px;
+            }
+        }
+
+        /* 图片样式 */
+        .error-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* 文字区域 */
+        .error-text {
             max-width: 600px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
-            border: 2px solid #bbdefb;
+            width: 100%;
+            padding: 0 20px;
+            text-align: center;
         }
 
         .error-code {
             font-size: 120px;
             font-weight: bold;
             color: #2196f3;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(33, 150, 243, 0.2);
         }
 
@@ -53,17 +81,6 @@
             font-size: 16px;
         }
 
-        /* 图片样式 - 已移除阴影 */
-        .error-image {
-            max-width: 100%;
-            height: auto;
-            max-height: 250px;
-            margin: 20px auto;
-            display: block;
-            border-radius: 10px;
-            /* 已移除 box-shadow 属性 */
-        }
-
         .btn {
             padding: 14px 40px;
             border: none;
@@ -77,7 +94,6 @@
             background: #2196f3;
             color: white;
             box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
-            margin-top: 20px;
         }
 
         .btn:hover {
@@ -94,13 +110,11 @@
             margin-top: 30px;
             color: #999;
             font-size: 14px;
+            text-align: center;
+            width: 100%;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-
+        @media (max-width: 767px) {
             .error-code {
                 font-size: 90px;
             }
@@ -110,13 +124,7 @@
             }
 
             .error-image {
-                max-height: 200px;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                padding: 16px;
+                max-height: 250px;
             }
         }
 
@@ -135,23 +143,26 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 请将您的图片放在 important-img/404.png 路径下 -->
+    <div class="error-container">
+        <!-- 图片在左侧（横屏）或上方（竖屏） -->
         <img src="important-img/404.png" 
              alt="404 Error" 
              class="error-image floating">
 
-        <div class="error-code">404</div>
-        <div class="error-message">File Not Found</div>
-        <div class="error-description">
-            很抱歉，您要找的文件好像迷路了！<br>
-            可能是文件已被移动、删除，或者链接有误。
-        </div>
+        <!-- 文字在右侧（横屏）或下方（竖屏） -->
+        <div class="error-text">
+            <div class="error-code">404</div>
+            <div class="error-message">File Not Found</div>
+            <div class="error-description">
+                很抱歉，您要找的文件好像迷路了！<br>
+                可能是文件已被移动、删除，或者链接有误。
+            </div>
 
-        <a href="/" class="btn">返回首页</a>
+            <a href="/" class="btn">返回首页</a>
 
-        <div class="footer">
-            如果您认为这是一个错误，请联系管理员。
+            <div class="footer">
+                如果您认为这是一个错误，请联系管理员。
+            </div>
         </div>
     </div>
 
